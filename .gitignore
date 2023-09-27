@@ -1,0 +1,23 @@
+# Folders
+Programación/
+
+# Archivos de la suite Microsoft Office
+*.doc*
+*.xls*
+*.ppt*
+
+# Archivos de LibreOffice y OpenOffice
+*.odt
+*.ods
+*.odp
+
+# Archivos de Google Docs (formatos de exportación)
+*.gdoc
+*.gsheet
+*.gslides
+
+# PDF Files
+*.pdf*
+
+# Temporary files
+~$*
