@@ -1,5 +1,6 @@
 # Folders
 Programación/
+1. HTML-CSS/1. HTML-CSS. 11. Ejercicios float y clear/
 
 # Archivos de la suite Microsoft Office
 *.doc*
@@ -21,3 +22,6 @@ Programación/
 
 # Temporary files
 ~$*
+
+# URL files (links de Windows)
+*.url
