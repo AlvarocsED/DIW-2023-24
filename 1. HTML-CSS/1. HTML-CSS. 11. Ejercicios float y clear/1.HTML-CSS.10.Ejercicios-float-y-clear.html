@@ -7,7 +7,6 @@
   <title>1. HTML-CSS. 11. Ejercicios float y clear</title>
   <link rel="stylesheet" href="1.HTML-CSS.10.Ejercicios-float-y-clear.css">
   <!-- highlight.css -->
-  <link rel="stylesheet" href="highlight/styles/vs2015.min.css">
   <link rel="stylesheet" href="highlight/vs2015.min.css">
 </head>
 
@@ -38,20 +37,35 @@
     <div class="container">
       <section id="ejercicio1" class="ejercicio">
         <h2>Ejercicio 1.</h2>
-        <h3>Desarrolla la siguiente interfaz:</h3>
+        <h3>Desarrolla la siguiente interfaz a partir del HTML proporionado:</h3>
         <img class="img-centered max-760px" src="img/img-ej-1.jpg" alt="Layout ejercicio 1">
+        <pre><code class="language-html">&lt;body&gt;
+  &lt;div class=&quot;div1&quot;&gt;Div1&lt;/div&gt;
+  &lt;div class=&quot;div2&quot;&gt;Div2&lt;/div&gt;
+&lt;/body&gt;</code></pre>
       </section>
 
       <section id="ejercicio2" class="ejercicio">
         <h2>Ejercicio 2.</h2>
-        <h3>Desarrolla la siguiente interfaz:</h3>
+        <h3>Desarrolla la siguiente interfaz a partir del HTML proporionado:</h3>
         <img class="img-centered max-760px" src="img/img-ej-2.jpg" alt="Layout ejercicio 2">
+        <pre><code class="language-html">&lt;body&gt;
+  &lt;div class=&quot;div1&quot;&gt;Div1&lt;/div&gt;
+  &lt;div class=&quot;div2&quot;&gt;Div2&lt;/div&gt;
+  &lt;div class=&quot;div3&quot;&gt;Div3&lt;/div&gt;
+&lt;/body&gt;</code></pre>
       </section>
 
       <section id="ejercicio3" class="ejercicio">
         <h2>Ejercicio 3.</h2>
-        <h3>Desarrolla la siguiente interfaz:</h3>
+        <h3>Desarrolla la siguiente interfaz a partir del HTML proporionado:</h3>
         <img class="img-centered max-760px" src="img/img-ej-3.jpg" alt="Layout ejercicio 3">
+        <pre><code class="language-html">&lt;body&gt;
+  &lt;div class=&quot;div1&quot;&gt;Div1&lt;/div&gt;
+  &lt;div class=&quot;divtexto&quot;&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ipsum possimus eius cum a hic excepturi molestias. Neque saepe fugit, placeat dolor autem porro voluptatibus numquam iste reprehenderit molestias ea.&lt;/div&gt;
+  &lt;div class=&quot;div2&quot;&gt;Div2&lt;/div&gt;
+  &lt;div style=&quot;clear: both;&quot;&gt;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem corporis perferendis eos facilis, commodi assumenda et sequi eligendi iure? Officiis tempora labore id expedita asperiores aperiam sint doloribus facere qui&lt;/div&gt;
+&lt;/body&gt;</code></pre>
       </section>
 
       <section id="ejercicio4" class="ejercicio">
@@ -62,7 +76,7 @@
 
       <section id="ejercicio5" class="ejercicio">
         <h2>Ejercicio 5.</h2>
-        <h3>Obtén la siguiente imagen simplemente con CSS a partir del siguiente HTML. Cada div tiene un padding de 20px, está en negrita, centrado y debe ocupar exactamente el 25% de la anchura de la pantalla, sea cual sea esta anchura.</h3>
+        <h3>Obtén la siguiente imagen simplemente con CSS a partir del siguiente HTML. Cada div tiene un <code class="inline-code">padding</code> de 20px, está en negrita, centrado y debe ocupar exactamente el 25% de la anchura de la pantalla, sea cual sea esta anchura.</h3>
 
         <pre><code class="language-html">&lt;body&gt;
   &lt;div class=&quot;div1&quot;&gt;Div1&lt;/div&gt;
@@ -76,7 +90,7 @@
 
       <section id="ejercicio6" class="ejercicio">
         <h2>Ejercicio 6.</h2>
-        <h3>Obtén la siguiente interfaz usando float.</h3>
+        <h3>Obtén la siguiente interfaz usando <code class="inline-code">float</code>.</h3>
 
         <img class="img-centered max-760px" src="img/img-ej-6.jpg" alt="Layout ejercicio 6">
       </section>
@@ -93,7 +107,7 @@
 
       <section id="ejercicio8" class="ejercicio">
         <h2>Ejercicio 8.</h2>
-        <h3>Obtén la siguiente interfaz. Asegúrate de que obtienes aproximadamente la misma interfaz ajustando las dos anchuras indicadas. No uses la propiedad <code class="inline-code">height</code> para determinar la altura de ningún elemento. Elige las imágenes que quieras. Puede susar <a href="https://picsum.photos/" target="_blank">esta web</a> para generar imágenes aleatorias de las dimensiones que quieras</h3>
+        <h3>Obtén la siguiente interfaz. Asegúrate de que obtienes aproximadamente la misma interfaz ajustando las dos anchuras indicadas. No uses la propiedad <code class="inline-code">height</code> para determinar la altura de ningún elemento. Elige las imágenes que quieras. Puedes usar <a href="https://picsum.photos/" target="_blank">Lorem Picsum</a> para generar imágenes aleatorias de las dimensiones que quieras. Los links a las imágenes utilizadas en la imagen siguiente son <a href="https://picsum.photos/id/14/400/200" target="_blank">este</a>, <a href="https://picsum.photos/id/16/400/200" target="_blank">este</a> y <a href="https://picsum.photos/id/17/400/200" target="_blank">este</a>.</h3>
 
         <img class="img-centered max-760px" src="img/img-ej-8-1300px.jpg" alt="Layout ejercicio 8 1300px ancho">
         <p class="img-sub">1300px de anchura</p>
@@ -110,7 +124,7 @@
 
       <section id="ejercicio10" class="ejercicio">
         <h2>Ejercicio 10.</h2>
-        <h3>10. A partir del HTML y CSS proporcionado, obtén la siguiente interfaz usando la propiedad <code class="inline-code">float</code>. La página debe estar centrada en el navegador, ser de 1024px y debes añadir la clase <code class="inline-code">clearfix</code> en el HTML donde sea necesario. Nota: Guarda el CSS proporcionado en un archivo css externo, ya que será el mismo en los ejercicios siguientes.</h3>
+        <h3>A partir del HTML y CSS proporcionado, obtén la siguiente interfaz usando <code class="inline-code">float</code>. La página debe estar centrada en el navegador, ser de 1024px y debes añadir la clase <code class="inline-code">clearfix</code> en el HTML donde sea necesario. Nota: Guarda el CSS proporcionado en un archivo css externo, ya que será el mismo en los ejercicios siguientes.</h3>
 
         <img class="img-centered max-760px" src="img/img-ej-10.jpg" alt="Layout ejercicio 10">
 
@@ -237,7 +251,7 @@ div {
 
       <section id="ejercicio11" class="ejercicio">
         <h2>Ejercicio 11.</h2>
-        <h3>Modifica el CSS anterior para conseguir el siguiente comportamiento:</h3>
+        <h3>Utilizando el CSS del anterior ejercicio, modifica la solución para conseguir el siguiente comportamiento:</h3>
 
         <img class="img-centered max-760px" src="img/img-ej-11-1300x600px.jpg" alt="Layout ejercicio 11 1300x600px">
         <p class="img-sub">1300x600px de anchura</p>
