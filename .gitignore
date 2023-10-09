@@ -1,5 +1,12 @@
 # Ignore
 Programación/
+!1. HTML-CSS/1. HTML-CSS. 12. Ejercicios columnas/
+1. HTML-CSS/1. HTML-CSS. 12. Ejercicios columnas/soluciones
+1. HTML-CSS/1. HTML-CSS. 13. Ejercicios media queries/
+1. HTML-CSS/1. HTML-CSS. 13. Ejercicios media queries/soluciones
+1. HTML-CSS/1. HTML-CSS. 14. Ejercicio responsive design/
+1. HTML-CSS/1. HTML-CSS. 14. Ejercicio responsive design/solución
+
 # Allow
 
 
@@ -20,6 +27,9 @@ Programación/
 
 # PDF Files
 *.pdf*
+
+# Photoshop Files
+*.psd
 
 # Temporary files
 ~$*
