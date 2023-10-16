@@ -35,7 +35,7 @@
 
   <ol>
     <li>
-      <p>Sólo flota la imagen: Si la imagen flota a la izquierda, cuando el texto supere la altura de la imagen se irá a la izquierda, no respetando la situación que nos piden.</p>
+      <p>Sólo flota la imagen: Si la imagen flota a la izquierda, cuando el texto supere la altura de la imagen se irá a la izquierda, no respetando la situación que nos piden (*).</p>
     </li>
     <li>
       <p>Sólo flota el texto: Dado que el texto es largo, aunque lo flotemos a la derecha no causará ningún efecto en el resultado. Definitivamente, no es la solución.</p>
@@ -47,6 +47,19 @@
 
   <p>La solución está en usar <code>width</code> junto con <code>float</code>. La imagen ya está a la izquierda, por lo que no necesitamos que flote. Sólo necesitamos que el texto flote a la derecha y darles a ambos una anchura fija en porcentaje.</p>
   <p>Nota: Fíjate que al redimensionar la ventana esta explicación se <i>monta</i> encima de la imagen y el texto. Habría que englobarlos ambos en una contenedor y poner a ese contenedor la clase <code>clearfix</code>, pero no está hecho así para mantener la solución lo más limpia posible.</p>
+  <p>(*) Es posible alcanzar la disposición que nos piden haciendo flotar la imagen a la izquierda si al texto le damos un valor de <code>overflow</code> distinto de <code>visible</code>:</p>
+  <pre><code>img {
+  width: 20%;
+  float: left
+}
+
+.divtexto {
+  overflow: hidden;
+  width: 80%;
+  padding: 0px 15px;
+}</code></pre>
+  <p>Fuente: <a href="https://www.w3.org/TR/css-overflow-3/" target="_blank">https://www.w3.org/TR/css-overflow-3/</a></p>
+
 </body>
 
 </html>
