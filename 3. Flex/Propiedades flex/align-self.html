@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>align-self</title>
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
+      padding: 10px;
+      margin: 0px 0px 10px 0px;
+      font-size: 1.25rem;
+    }
+
+    #options {
+      display: flex;
+    }
+
+    #options>* {
+      margin: 0px 10px 20px 0px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      padding: 5px 10px;
+      background-color: #ccc;
+    }
+
+    #options>*.active,
+    #options>*:hover {
+      background-color: #333;
+      color: white;
+    }
+
+    #contenedor-flex {
+      background-color: #ccc;
+      display: flex;
+      height: 200px;
+    }
+
+    .item {
+      background-color: #777;
+      border: 1px solid black;
+      padding: 20px;
+    }
+
+    code {
+      background-color: lightgrey;
+      padding: 2px 5px;
+      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
+      font-size: 0.875rem;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>align-self</h2>
+  <div id="options">
+    <div>flex-start</div>
+    <div>flex-end</div>
+    <div>center</div>
+    <div>stretch</div>
+    <div>baseline</div>
+  </div>
+  <div id="contenedor-flex">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+  <p>La propiedad <code>align-self</code> actúa exactamente igual que <code>align-items</code>, salvo que se utiliza sobre un ítem hijo específico y no sobre el elemento contenedor.</p>
+  <p>Gracias a ese detalle, <code>align-self</code> permite cambiar el comportamiento de <code>align-items</code> y sobrescribirlo con comportamientos específicos para ítems concretos que no queremos que se comporten igual que el resto.</p>
+
+  <script>
+    $(document).ready(function () {
+      $("#options>*").click(function () {
+        $(".item:nth-child(2)").css("align-self", $(this).html());
+
+        // Quitamos la clase active a todos los items y se lo ponemos al que se ha hecho clic
+        $("#options>*").removeClass("active");
+        $(this).addClass("active");
+      });
+
+      // Simulamos clic en el primer elemento
+      $("#options>*:nth-child(1)").click();
+    });
+  </script>
+</body>
+
+</html>

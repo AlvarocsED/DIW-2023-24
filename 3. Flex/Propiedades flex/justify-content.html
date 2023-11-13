@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>justify-content</title>
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
+      padding: 10px;
+      margin: 0px 0px 10px 0px;
+      font-size: 1.25rem;
+      border-bottom: 1px solid rgb(185, 185, 185);
+    }
+
+    .highlight {
+      background-color: rgb(172, 255, 172);
+    }
+
+    code {
+      background-color: lightgrey;
+      padding: 2px 5px;
+      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
+      font-size: 0.875rem;
+    }
+
+    p,
+    li {
+      line-height: 1.5;
+    }
+
+    label,
+    input[type="checkbox"] {
+      cursor: pointer;
+    }
+
+    main {
+      display: flex;
+      column-gap: 2rem;
+    }
+
+    main #options {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      column-gap: 100px;
+    }
+
+    main #options .row {
+      display: flex;
+      column-gap: 10px;
+    }
+
+    #options [data-option] {
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      padding: 5px 10px;
+      background-color: #ccc;
+      white-space: nowrap;
+    }
+
+    #options [data-option].active,
+    #options [data-option]:hover {
+      background-color: #333;
+      color: white;
+    }
+
+    #contenedor-flex {
+      grid-area: ejemplo;
+      background-color: #ccc;
+      padding: 20px 0px;
+      width: 400px;
+      display: flex;
+    }
+
+    #contenedor-flex .item {
+      background-color: #777;
+      border: 1px solid black;
+      padding: 20px;
+    }
+
+    #explicacion .ul-situaciones>li {
+      padding: 5px;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>justify-content</h2>
+
+  <main>
+
+    <div id="izquierda">
+      <h3>Posibles valores</h3>
+      <div id="options">
+        <div class="row">
+          <div data-option="start">flex-start</div>
+          <div data-option="end">flex-end</div>
+          <div data-option="center">center</div>
+          <div data-option="start">start</div>
+          <div data-option="end">end</div>
+        </div>
+        <div class="row">
+          <div data-option="space-between">space-between</div>
+          <div data-option="space-around">space-around</div>
+          <div data-option="space-evenly">space-evenly</div>
+          <div data-option="stretch">stretch</div>
+        </div>
+        <div class="row">
+          <div data-option="left">left</div>
+          <div data-option="right">right</div>
+        </div>
+
+        <div style="margin-bottom: 20px">
+          <input type="checkbox" id="cb-flex-wrap" name="cb-flex-wrap">
+          <label for="cb-flex-wrap">Activar <code>flex-wrap: wrap</code></label>
+        </div>
+      </div>
+
+      <div id="contenedor-flex">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+      </div>
+    </div>
+
+    <div id="derecha">
+      <h3>Descripción</h3>
+      <div id="explicacion">
+        <p>La propiedad <code>justify-content</code> sirve para alinear los ítems a lo largo del eje principal.</p>
+        <p>Prueba a activar el checkbox para ver cómo se comporta esta propiedad cuando <code>flex-wrap: wrap</code>, es decir, en un contenedor multilínea.</p>
+
+        <ul class="ul-situaciones">
+          <li data-option="start"><code>flex-start</code> y <code>start</code> agrupan los ítems al principio del eje principal.</li>
+          <li data-option="end"><code>flex-end</code> y <code>end</code> agrupan los ítems al final del eje principal.</li>
+          <li data-option="center"><code>center</code> agrupa los ítems en el centro del eje principal.</li>
+          <li data-option="space-between"><code>space-between</code> distribuye el espacio entre los ítems dejando uno al inicio y otro al final.</li>
+          <li data-option="space-around"><code>space-around</code> distribuye el espacio entre ítems dejando el mismo espacio entre los ítems, como si fuera un cilindro.</li>
+          <li data-option="space-evenly"><code>space-evenly</code> distribuye el espacio entre ítems dejando el mismo espacio entre los ítems y hasta los bordes.</li>
+          <li data-option="stretch"><code>stretch</code> distribuye el espacio entre ítems dejando el mismo espacio entre los ítems y hasta los bordes.</li>
+          <li data-option="left"><code>left</code> distribuye el espacio entre ítems dejando el mismo espacio entre los ítems y hasta los bordes.</li>
+          <li data-option="right"><code>right</code> distribuye el espacio entre ítems dejando el mismo espacio entre los ítems y hasta los bordes.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    $(document).ready(function () {
+      $("#options [data-option]").click(function () {
+        $("#contenedor-flex").css("justify-content", $(this).data("option"));
+        console.log($(this).data("option"));
+
+        // Quitamos la clase active a todos los items y se lo ponemos al que se ha hecho clic
+        $("#options [data-option]").removeClass("active");
+        $(this).addClass("active");
+
+        // Eliminamos la clase highlight a todos los li y se la ponemos al que corresponda
+        $(".ul-situaciones li").removeClass("highlight");
+        $('.ul-situaciones li[data-option="' + $(this).data("option") + '"]').addClass("highlight");
+      });
+
+      // Simulamos clic en el primer elemento
+      $("#options .option:nth-child(1)").click();
+
+      // Clic sobre el checkbox
+      $('#cb-flex-wrap').change(function () {
+        if ($(this).is(':checked')) {
+          $("#contenedor-flex").css("flex-wrap", "wrap");
+          $("#contenedor-flex").css("width", "140px");
+        }
+        else {
+          $("#contenedor-flex").css("flex-wrap", "nowrap");
+          $("#contenedor-flex").css("width", "400px");
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

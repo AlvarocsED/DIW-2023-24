@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>flex-grow</title>
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
+      padding: 10px;
+      margin: 0px 0px 10px 0px;
+      font-size: 1.25rem;
+    }
+
+    #options {
+      display: flex;
+    }
+
+    #options>* {
+      margin: 0px 10px 20px 0px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      padding: 5px 10px;
+      background-color: #ccc;
+    }
+
+    #options>*.active,
+    #options>*:hover {
+      background-color: #333;
+      color: white;
+    }
+
+    sub {
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    #contenedor-flex {
+      background-color: #ccc;
+      display: flex;
+      width: 300px;
+    }
+
+    .item {
+      background-color: #777;
+      border: 1px solid black;
+      width: 50px;
+      text-align: center;
+      padding: 20px 0px;
+      flex-grow: 0;
+    }
+
+    .ul-situaciones>li {
+      padding: 5px 10px;
+      margin: 0;
+    }
+
+    .highlight {
+      background-color: rgb(172, 255, 172);
+    }
+
+    code {
+      background-color: lightgrey;
+      padding: 2px 5px;
+      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
+      font-size: 0.875rem;
+    }
+
+    p,
+    li {
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>flex-grow</h2>
+  <div id="options">
+    <div>flex-grow: [0,0,0]</div>
+    <div>flex-grow: [0,1,0]</div>
+    <div>flex-grow: [1,1,1]</div>
+    <div>flex-grow: [1,2,1]</div>
+    <div>flex-grow: [1,3,1]</div>
+  </div>
+  <sub>flex-grow: [X,Y,Z] indica el valor de la propiedad para cada ítem flexible.</sub>
+  <div id="contenedor-flex">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+  <p>La propiedad <code>flex-grow</code> especifica el factor de crecimiento de un elemento flexible en la dirección del eje principal. Por defecto vale 0, lo que implica que el ítem no se estira. Si asignamos el mismo valor a todos (cualquiera distinto de 0), se estiran todos por igual.</p>
+  <p>Observa lo que sucede en las siguientes situaciones:</p>
+  <ul class="ul-situaciones">
+    <li><b>Situación 1.</b> Todos los elementos tienen <code>flex-grow: 0</code>. El contenedor ocupa 300px de ancho y cada ítem ocupa 50px. Eso deja un espacio libre de 150px. Como todos los ítems tienen el valor por defecto, 0, ninguno se estira y el espacio libre queda sin asignar.</li>
+    <li><b>Situación 2.</b> Todos los elementos tienen <code>flex-grow: 0</code> menos el segundo, que tiene <code>flex-grow: 1</code>. Todo el espacio dispoible se asigna al ítem 2, por lo que pasa a ocupar 50+150=200px.</li>
+    <li><b>Situación 3.</b> Todos los elementos tienen <code>flex-grow: 1</code>. Los 150px de espacio libre se reparten a partes iguales entre los 3 ítems.</li>
+    <li><b>Situación 4.</b> Todos los elementos tienen <code>flex-grow: 1</code> menos el segundo, que tiene <code>flex-grow: 2</code>. Se reparten los 150px entre 4, que es la suma de todos los valores de <code>flex-grow</code>: 150/4 = 37'5px. Ahora se asigna a cada ítem 37'5px multiplicado por su valor de <code>flex-grow</code>. Por tanto, los ítems 1 y 3 ocupan 50 + 37'5 = 87'5px cada uno, mientras que el ítem 2 ocupa 50 + 37'5*2 = 125px.</li>
+    <li><b>Situación 5.</b> Todos los elementos tienen <code>flex-grow: 1</code> menos el segundo, que tiene <code>flex-grow: 3</code>. Se reparten los 150px entre 5, que es la suma de todos los valores de <code>flex-grow</code>: 150/5 = 30px. Ahora se asigna a cada ítem 30px multiplicado por su valor de <code>flex-grow</code>. Por tanto, los ítems 1 y 3 ocupan 50 + 30 = 80px cada uno, mientras que el ítem 2 ocupa 50 + 30*3 = 140px.</li>
+  </ul>
+
+  <script>
+    $(document).ready(function () {
+      $("#options>*").click(function () {
+        switch ($(this).index()) {
+          case 0:
+            $("#contenedor-flex>*").css("flex-grow", 0);
+            break;
+          case 1:
+            $("#contenedor-flex>*").css("flex-grow", 0);
+            $("#contenedor-flex>*:nth-child(2)").css("flex-grow", 1);
+            break;
+          case 2:
+            $("#contenedor-flex>*").css("flex-grow", 1);
+            break;
+          case 3:
+            $("#contenedor-flex>*").css("flex-grow", 1);
+            $("#contenedor-flex>*:nth-child(2)").css("flex-grow", 2);
+            break;
+          case 4:
+            $("#contenedor-flex>*").css("flex-grow", 1);
+            $("#contenedor-flex>*:nth-child(2)").css("flex-grow", 3);
+            break;
+        }
+
+        // Eliminamos la clase highlight a todos los li y se la ponemos al que corresponda
+        $(".ul-situaciones>li").removeClass("highlight");
+        $(".ul-situaciones>li:nth-child(" + ($(this).index() + 1) + ")").addClass("highlight");
+
+        // Ponemos la anchura de cada ítem flexible
+        $("#contenedor-flex>*").each(function () {
+          $(this).html($(this).css("width"));
+        });
+
+        // Quitamos la clase active a todos los items y se lo ponemos al que se ha hecho clic
+        $("#options>*").removeClass("active");
+        $(this).addClass("active");
+      });
+
+      // Simulamos clic en el primer elemento
+      $("#options>*:nth-child(1)").click();
+
+    });
+  </script>
+</body>
+
+</html>

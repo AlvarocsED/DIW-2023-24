@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>order</title>
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
+      padding: 10px;
+      margin: 0px 0px 10px 0px;
+      font-size: 1.25rem;
+    }
+
+    #options {
+      display: flex;
+    }
+
+    #options>* {
+      margin: 0px 10px 20px 0px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      padding: 5px 10px;
+      background-color: #ccc;
+    }
+
+    #options>*.active,
+    #options>*:hover {
+      background-color: #333;
+      color: white;
+    }
+
+    sub {
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    #contenedor-flex {
+      background-color: #ccc;
+      display: flex;
+      width: 300px;
+      padding: 20px 0px;
+    }
+
+    .item {
+      background-color: #777;
+      border: 1px solid black;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .ul-situaciones>li {
+      padding: 10px 5px;
+      margin: 0;
+    }
+
+    .highlight {
+      background-color: rgb(172, 255, 172);
+    }
+
+    code {
+      background-color: lightgrey;
+      padding: 2px 5px;
+      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
+      font-size: 0.875rem;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>order</h2>
+  <div id="options">
+    <div>order: [0,0,0]</div>
+    <div>order: [1,1,1]</div>
+    <div>order: [0,1,0]</div>
+    <div>order: [2,1,0]</div>
+  </div>
+  <sub>order: [X,Y,Z] indica el valor de la propiedad para cada ítem flexible.</sub>
+  <div id="contenedor-flex">
+    <div class="item">A</div>
+    <div class="item">B</div>
+    <div class="item">C</div>
+  </div>
+  <p>La propiedad <code>order</code> establece el orden de los ítems independientemente de su ubicación en el código.</p>
+  <p>Los elementos con un valor de <code>order</code> más alto aparecerán más tarde en el código.</p>
+
+  <p>Observa lo que sucede en las siguientes situaciones:</p>
+  <ul class="ul-situaciones">
+    <li><b>Situación 1.</b> Todos los ítems tienen <code>order: 0</code>. Los ítems aparecen según se declaran en el html.</li>
+    <li><b>Situación 2.</b> Todos los ítems tienen <code>order: 1</code>. Como el valor de los ítems es el mismo, aparecen en el orden en que se declaran en el html.</li>
+    <li><b>Situación 3.</b> El ítem 'B' tiene un valor de <code>order</code> mayor que el de sus hermanos, por lo que aparece el último.</li>
+    <li><b>Situación 3.</b> El ítem 'A' tiene un valor de <code>order</code> mayor que el de sus hermanos, por lo que aparece el último. El ítem 'C' aparece el primero porque es el ítem con valor de <code>order</code> más bajo.</li>
+  </ul>
+
+  <script>
+    $(document).ready(function () {
+      $("#options>*").click(function () {
+        switch ($(this).index()) {
+          case 0:
+            $("#contenedor-flex>*").css("order", 0);
+            break;
+          case 1:
+            $("#contenedor-flex>*").css("order", 1);
+            break;
+          case 2:
+            $("#contenedor-flex>*").css("order", 0);
+            $("#contenedor-flex>*:nth-child(2)").css("order", 1);
+            break;
+          case 3:
+            $("#contenedor-flex>*:nth-child(1)").css("order", 2);
+            $("#contenedor-flex>*:nth-child(2)").css("order", 1);
+            $("#contenedor-flex>*:nth-child(3)").css("order", 0);
+            break;
+        }
+
+        // Eliminamos la clase highlight a todos los li y se la ponemos al que corresponda
+        $(".ul-situaciones>li").removeClass("highlight");
+        $(".ul-situaciones>li:nth-child(" + ($(this).index() + 1) + ")").addClass("highlight");
+
+        // Eliminamos la clase active a todos los elementos y se la ponemos al que hemos hecho click
+        $("#options>*").removeClass("active");
+        $(this).addClass("active");
+      });
+
+      // Simulamos clic en el primer elemento
+      $("#options>*:nth-child(1)").click();
+    });
+  </script>
+</body>
+
+</html>

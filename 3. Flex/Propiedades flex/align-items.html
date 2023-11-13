@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>align-items</title>
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
+      padding: 10px;
+      margin: 0px 0px 10px 0px;
+      font-size: 1.25rem;
+    }
+
+    #options {
+      display: flex;
+    }
+
+    #options>* {
+      margin: 0px 10px 20px 0px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      padding: 5px 10px;
+      background-color: #ccc;
+    }
+
+    #options>*.active,
+    #options>*:hover {
+      background-color: #333;
+      color: white;
+    }
+
+    #contenedor-flex {
+      background-color: #ccc;
+      height: 200px;
+      width: 200px;
+      display: flex;
+    }
+
+    .item {
+      background-color: #777;
+      border: 1px solid black;
+      padding: 20px;
+    }
+
+    code {
+      background-color: lightgrey;
+      padding: 2px 5px;
+      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
+      font-size: 0.875rem;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    label,
+    input[type="checkbox"] {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>align-items</h2>
+  <div id="options">
+    <div>flex-start</div>
+    <div>flex-end</div>
+    <div>center</div>
+    <div>stretch</div>
+    <div>baseline</div>
+  </div>
+
+  <div style="margin-bottom: 20px">
+    <input type="checkbox" id="cb-flex-wrap" name="cb-flex-wrap">
+    <label for="cb-flex-wrap">Activar <code>flex-wrap: wrap</code></label>
+  </div>
+
+  <div id="contenedor-flex">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+  <p>La propiedad <code>align-items</code> sirve para alinear los ítems a lo largo del eje secundario.</p>
+  <p>Prueba a activar el checkbox para ver cómo se comporta esta propiedad cuando <code>flex-wrap: wrap</code>, es decir, en un contenedor multilínea.</p>
+
+  <script>
+    $(document).ready(function () {
+      $("#options>*").click(function () {
+        console.log($(this).html());
+        $("#contenedor-flex").css("align-items", $(this).html());
+
+        // Quitamos la clase active a todos los items y se lo ponemos al que se ha hecho clic
+        $("#options>*").removeClass("active");
+        $(this).addClass("active");
+
+        // Clic sobre el checkbox
+        $('#cb-flex-wrap').change(function () {
+          if ($(this).is(':checked')) {
+            $("#contenedor-flex").css("flex-wrap", "wrap");
+            $("#contenedor-flex").css("width", "125px");
+          }
+          else {
+            $("#contenedor-flex").css("flex-wrap", "nowrap");
+            $("#contenedor-flex").css("width", "200px");
+          }
+        });
+      });
+
+      // Simulamos clic en el primer elemento
+      $("#options>*:nth-child(1)").click();
+
+      // Por defecto, el checkbox desactivado (errores cuando se recarga la página)
+      $('#cb-flex-wrap').prop("checked", false);
+    });
+  </script>
+</body>
+
+</html>

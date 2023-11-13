@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>flex-shrink</title>
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
+      padding: 10px;
+      margin: 0px 0px 10px 0px;
+      font-size: 1.25rem;
+    }
+
+    #options {
+      display: flex;
+    }
+
+    #options>* {
+      margin: 0px 10px 20px 0px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      padding: 5px 10px;
+      background-color: #ccc;
+    }
+
+    #options>*.active,
+    #options>*:hover {
+      background-color: #333;
+      color: white;
+    }
+
+    sub {
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    #contenedor-flex {
+      background-color: #ccc;
+      display: flex;
+      width: 300px;
+      padding: 20px 0px;
+    }
+
+    .item {
+      background-color: #777;
+      border: 1px solid black;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .ul-situaciones>li {
+      padding: 5px;
+      margin: 0;
+    }
+
+    .highlight {
+      background-color: rgb(172, 255, 172);
+    }
+
+    code {
+      background-color: lightgrey;
+      padding: 2px 5px;
+      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
+      font-size: 0.875rem;
+    }
+
+    .ul>li {
+      padding: 5px 10px;
+      margin: 0;
+    }
+
+    p,
+    li {
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>flex-shrink</h2>
+  <div id="options">
+    <div>flex-shrink: [1,1,1]</div>
+    <div>flex-shrink: [0,0,0]</div>
+    <div>flex-shrink: [0,1,0]</div>
+    <div>flex-shrink: [0,2,0]</div>
+    <div>flex-shrink: [1,2,0]</div>
+  </div>
+  <sub>flex-shrink: [X,Y,Z] indica el valor de la propiedad para cada ítem flexible.</sub>
+  <div id="contenedor-flex">
+    <div class="item">Lorem ipsum dolor sit amet</div>
+    <div class="item">Lorem ipsum dolor</div>
+    <div class="item">Lorem ipsum</div>
+  </div>
+  <p>La propiedad <code>flex-shrink</code> especifica el factor de decrecimiento de un elemento flexible en la dirección del eje principal. Esta propiedad sólo tiene efecto cuando la suma de las anchuras (o alturas) de los items flexibles es mayor que la anchura (o altura) total del contenedor.</p>
+  <ul>
+    <li>
+      <p>Si <code>flex-shrink: 1</code> (por defecto) entonces si no hay suficiente espacio disponible en el eje principal del contenedor, el elemento se encogerá en un factor de 1 y envolverá su contenido.</p>
+    </li>
+    <li>
+      <p>Si <code>flex-shrink: 0</code> el elemento no se encogerá. Conservará el ancho que necesita y no envolverá su contenido. Sus hermanos se encogerán para dar espacio al elemento de destino. Debido a que el elemento de destino no envolverá su contenido, existe la posibilidad de que el contenido del contenedor se desborde.</p>
+    </li>
+    <li>
+      <p>Si <code>flex-shrink: 2</code>. Debido a que el valor de contracción flexible es relativo, su comportamiento depende del valor de sus elementos hermanos. Un mayor valor con respecto al de sus hermanos implica una contracción más rápida a medida que el contenedor se hace más pequeño.</p>
+    </li>
+    <li>
+      <p>Si asignamos el mismo valor distinto de 0 a todos, todos se encogerán en la misma proporción.</p>
+    </li>
+  </ul>
+
+  <p>Observa lo que sucede en las siguientes situaciones:</p>
+  <ul class="ul-situaciones">
+    <li><b>Situación 1.</b> Todos los ítems tienen <code>flex-shrink: 1</code>. Dado que no hay suficiente espacio disponible en el eje principal del contenedor, todos los ítems se encogerán en la misma proporción, envolviendo su contenido.</li>
+    <li><b>Situación 2.</b> Todos los ítems tienen <code>flex-shrink: 0</code>. Ningún ítem se encoge, por lo que si no hay suficiente espacio en el contenedor, como es el caso, se produce desbordamiento. Por supuesto, podemos evitar mostrar el desbordamiento con <code>overflow: hidden</code> en el contenedor.</li>
+    <li><b>Situación 3.</b> Los ítems 1 y 3 tienen <code>flex-shrink: 0</code> y el ítem 2 tiene <code>flex-shrink: 1</code>. El único ítem que se encoge es este último, el único que tiene <code>flex-shrink</code> distinto de cero.</li>
+    <li><b>Situación 4.</b> Misma situación que la anterior. Observa que no cambia nada el hecho de que el valor de <code>flex-shrink</code> haya pasado de 1 a 2.</li>
+    <li><b>Situación 5.</b> Para observar mejor qué sucede en esta situación, modifica el ejemplo para que dos ítems ocupen lo mismo de inicio, por ejemplo el 1 y el 2. Si aumentas la anchura del contenedor y con las herramientas de desarrollador la vas disminuyendo, observarás como el ítem 2 se encoge más rápido que el 1 debido a que su valor de <code>flex-shrink</code> es mayor. Y mayor será la diferencia cuando mayor sea esta relación.</li>
+  </ul>
+
+  <script>
+    $(document).ready(function () {
+      $("#options>*").click(function () {
+        switch ($(this).index()) {
+          case 0:
+            $("#contenedor-flex>*").css("flex-shrink", 1);
+            break;
+          case 1:
+            $("#contenedor-flex>*").css("flex-shrink", 0);
+            break;
+          case 2:
+            $("#contenedor-flex>*").css("flex-shrink", 0);
+            $("#contenedor-flex>*:nth-child(2)").css("flex-shrink", 1);
+            break;
+          case 3:
+            $("#contenedor-flex>*").css("flex-shrink", 0);
+            $("#contenedor-flex>*:nth-child(2)").css("flex-shrink", 2);
+            break;
+          case 4:
+            $("#contenedor-flex>*:nth-child(1)").css("flex-shrink", 1);
+            $("#contenedor-flex>*:nth-child(2)").css("flex-shrink", 2);
+            $("#contenedor-flex>*:nth-child(3)").css("flex-shrink", 0);
+            break;
+          case 4:
+            $("#contenedor-flex>*:nth-child(1)").css("flex-shrink", 1);
+            $("#contenedor-flex>*:nth-child(2)").css("flex-shrink", 2);
+            $("#contenedor-flex>*:nth-child(3)").css("flex-shrink", 1);
+            break;
+        }
+
+        // Eliminamos la clase highlight a todos los li y se la ponemos al que corresponda
+        $(".ul-situaciones>li").removeClass("highlight");
+        $(".ul-situaciones>li:nth-child(" + ($(this).index() + 1) + ")").addClass("highlight");
+
+        // Eliminamos la clase active a todos los elementos y se la ponemos al que hemos hecho click
+        $("#options>*").removeClass("active");
+        $(this).addClass("active");
+      });
+
+      // Simulamos clic en el primer elemento
+      $("#options>*:nth-child(1)").click();
+    });
+  </script>
+</body>
+
+</html>
