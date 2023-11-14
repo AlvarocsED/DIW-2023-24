@@ -13,7 +13,7 @@
 
     h2 {
       text-align: center;
-      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
+      font-family: "Consolas", "Lucida Console", "Courier New", Courier, monospace;
       padding: 10px;
       margin: 0px 0px 10px 0px;
       font-size: 1.25rem;
@@ -40,8 +40,8 @@
 
     #contenedor-flex {
       background-color: #ccc;
-      height: 200px;
-      width: 200px;
+      height: 250px;
+      width: 400px;
       display: flex;
     }
 
@@ -51,10 +51,14 @@
       padding: 20px;
     }
 
+    .item:nth-child(3) {
+      padding-top: 40px;
+    }
+
     code {
       background-color: lightgrey;
       padding: 2px 5px;
-      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
+      font-family: "Consolas", "Lucida Console", "Courier New", Courier, monospace;
       font-size: 0.875rem;
     }
 
@@ -85,9 +89,9 @@
   </div>
 
   <div id="contenedor-flex">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
+    <div class="item">Texto</div>
+    <div class="item">Más texto</div>
+    <div class="item">Un texto mucho más largo que ocupa más espacio</div>
   </div>
 
   <p>La propiedad <code>align-items</code> sirve para alinear los ítems a lo largo del eje secundario.</p>
@@ -104,14 +108,13 @@
         $(this).addClass("active");
 
         // Clic sobre el checkbox
-        $('#cb-flex-wrap').change(function () {
-          if ($(this).is(':checked')) {
+        $("#cb-flex-wrap").change(function () {
+          if ($(this).is(":checked")) {
             $("#contenedor-flex").css("flex-wrap", "wrap");
-            $("#contenedor-flex").css("width", "125px");
-          }
-          else {
-            $("#contenedor-flex").css("flex-wrap", "nowrap");
             $("#contenedor-flex").css("width", "200px");
+          } else {
+            $("#contenedor-flex").css("flex-wrap", "nowrap");
+            $("#contenedor-flex").css("width", "400px");
           }
         });
       });
@@ -120,7 +123,7 @@
       $("#options>*:nth-child(1)").click();
 
       // Por defecto, el checkbox desactivado (errores cuando se recarga la página)
-      $('#cb-flex-wrap').prop("checked", false);
+      $("#cb-flex-wrap").prop("checked", false);
     });
   </script>
 </body>
