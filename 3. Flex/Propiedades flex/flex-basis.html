@@ -54,7 +54,6 @@
       border: 1px solid black;
       text-align: center;
       padding: 20px 0px;
-      flex-basis: 200px;
     }
 
     code {
@@ -77,6 +76,7 @@
     <div>flex-basis:<br>[100px, content, 100px]</div>
     <div>flex-basis:<br>[100px, 100px, 100px]</div>
     <div>flex-basis:<br>[100px, 200px, 100px]</div>
+    <div>flex-basis:<br>[100px, 50%, 100px]</div>
     <div>flex-basis:<br>[33.3%, 33.3%, 33.3%]</div>
   </div>
   <sub>flex-basis: [X,Y,Z] indica el valor de la propiedad para cada ítem flexible.</sub>
@@ -108,6 +108,10 @@
             $("#contenedor-flex>*:nth-child(2)").css("flex-basis", "200px");
             break;
           case 4:
+            $("#contenedor-flex>*").css("flex-basis", "100px");
+            $("#contenedor-flex>*:nth-child(2)").css("flex-basis", "50%");
+            break;
+          case 5:
             $("#contenedor-flex>*").css("flex-basis", "33.3%");
             break;
         }
