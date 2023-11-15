@@ -2,8 +2,6 @@
 Programación/
 PRUEBAS/
 
-# Allow
-
 # Archivos de la suite Microsoft Office
 *.doc*
 *.xls*
@@ -31,3 +29,4 @@ PRUEBAS/
 # URL files (links de Windows)
 *.url
 
+# Allow
