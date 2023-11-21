@@ -29,4 +29,7 @@ PRUEBAS/
 # URL files (links de Windows)
 *.url
 
+# URL files (links de Windows)
+*.md
+
 # Allow
