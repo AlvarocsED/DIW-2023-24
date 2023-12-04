@@ -11,5 +11,5 @@ main {
 .sub-content {
   height: 300px;
   flex-grow: 1;
-  width: 0%;
+  flex-basis: 0%;
 }

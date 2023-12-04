@@ -19,12 +19,15 @@
 
     <div class="footer">footer</div>
   </div>
+
   <p>Aquí tenemos 3 opciones para establecer la anchura de los elementos centrales.</p>
-  <ul>
+
+  <ol>
     <li>Con <code>width: 33.3%</code></li>
     <li>Con <code>flex-basis: 33.3%</code></li>
-    <li>Con <code>flex-grow: 1</code>. Esto sólo funciona bien si los 3 elementos tienen la misma anchura inicial. Si no la tienen, hay que añadir <code>flex-basis: 0%</code>.</li>
-  </ul>
+    <li>Con <code>flex-grow: 1</code>. Esto sólo funciona bien si los 3 elementos tienen la misma anchura inicial. Si no la tienen, hay que añadir <code>flex-basis: 0%</code> (también funcionaría con <code>width: 0%</code>).</li>
+  </ol>
+  <p>Hay alguna opción más, como añadir a todos los elementos flexibles <code>flex-basis: 100%</code>. Entonces funciona, pero sólo porque el valor por defecto de <code>flex-shrink</code> es 1.</p>
 </body>
 
 </html>
