@@ -1,18 +1,10 @@
 /* MOBILE FIRST */
 [class*="col-"] {
-  width: 100%;
-  padding: 15px;
   flex: 0 0 auto;
 }
 
 .col {
-  padding: 15px;
   flex: 1 0 0%;
-  /* Atajo para:
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 0%;
-  */
 }
 
 .row {
@@ -43,10 +35,6 @@
 
   .fila-1 :last-child {
     order: 2;
-  }
-
-  [class*="col-t-"] {
-    flex: 0 0 auto;
   }
 
   .col-t-1 {
@@ -103,10 +91,6 @@
   .container {
     width: 800px;
     margin: 0 auto;
-  }
-
-  [class*="col-e-"] {
-    flex: 0 0 auto;
   }
 
   .col-e-1 {
