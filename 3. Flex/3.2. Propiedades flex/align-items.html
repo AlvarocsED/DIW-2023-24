@@ -4,128 +4,110 @@
 <head>
   <title>align-items</title>
   <meta charset="UTF-8">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/nav-styles.css">
+  <link rel="stylesheet" href="css/estilos.css">
+
   <style>
-    * {
-      box-sizing: border-box;
-      font-size: 1rem;
-    }
-
-    h2 {
-      text-align: center;
-      font-family: "Consolas", "Lucida Console", "Courier New", Courier, monospace;
-      padding: 10px;
-      margin: 0px 0px 10px 0px;
-      font-size: 1.25rem;
-    }
-
-    #options {
-      display: flex;
-    }
-
-    #options>* {
-      margin: 0px 10px 20px 0px;
-      border-radius: 10px;
-      cursor: pointer;
-      display: flex;
-      padding: 5px 10px;
-      background-color: #ccc;
-    }
-
-    #options>*.active,
-    #options>*:hover {
-      background-color: #333;
-      color: white;
-    }
-
     #contenedor-flex {
-      background-color: #ccc;
       height: 250px;
       width: 400px;
-      display: flex;
     }
 
-    .item {
-      background-color: #777;
-      border: 1px solid black;
+    #contenedor-flex .item {
       padding: 20px;
     }
 
-    .item:nth-child(3) {
+    #contenedor-flex .item:nth-child(3) {
       padding-top: 40px;
-    }
-
-    code {
-      background-color: lightgrey;
-      padding: 2px 5px;
-      font-family: "Consolas", "Lucida Console", "Courier New", Courier, monospace;
-      font-size: 0.875rem;
-    }
-
-    p {
-      line-height: 1.5;
-    }
-
-    label,
-    input[type="checkbox"] {
-      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
-  <h2>align-items</h2>
-  <div id="options">
-    <div>flex-start</div>
-    <div>flex-end</div>
-    <div>center</div>
-    <div>stretch</div>
-    <div>baseline</div>
+
+  <div id="container">
+
+    <nav></nav>
+
+    <main>
+
+      <h2>align-items</h2>
+
+      <div id="options">
+        <div class="option default">flex-start</div>
+        <div class="option">flex-end</div>
+        <div class="option">center</div>
+        <div class="option">stretch</div>
+        <div class="option">baseline</div>
+
+        <div class="break"></div>
+
+        <div class="no-effect">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="cb-flex-wrap">
+            <label class="form-check-label" for="cb-flex-wrap"><code>flex-wrap: wrap</code></label>
+          </div>
+        </div>
+      </div>
+
+      <div id="contenedor-flex" class="mb-3">
+        <div class="item">Texto</div>
+        <div class="item">Más texto</div>
+        <div class="item">Un texto mucho más largo que ocupa más espacio</div>
+      </div>
+
+      <p>La propiedad <code>align-items</code> sirve para alinear los ítems a lo largo del eje secundario.</p>
+      <p>Prueba a activar el checkbox para ver cómo se comporta esta propiedad cuando <code>flex-wrap: wrap</code>, es decir, en un contenedor multilínea.</p>
+
+      <p class="mb-0">Documentación:</p>
+      <ul>
+        <li><a href="https://www.w3.org/TR/css-flexbox-1/#align-items-property" target="_blank" rel="noopener noreferrer">www.w3.org</a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/align-items" target="_blank" rel="noopener noreferrer">MDN Web Docs</a></li>
+      </ul>
+    </main>
+
   </div>
 
-  <div style="margin-bottom: 20px">
-    <input type="checkbox" id="cb-flex-wrap" name="cb-flex-wrap">
-    <label for="cb-flex-wrap">Activar <code>flex-wrap: wrap</code></label>
-  </div>
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-  <div id="contenedor-flex">
-    <div class="item">Texto</div>
-    <div class="item">Más texto</div>
-    <div class="item">Un texto mucho más largo que ocupa más espacio</div>
-  </div>
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-  <p>La propiedad <code>align-items</code> sirve para alinear los ítems a lo largo del eje secundario.</p>
-  <p>Prueba a activar el checkbox para ver cómo se comporta esta propiedad cuando <code>flex-wrap: wrap</code>, es decir, en un contenedor multilínea.</p>
+  <script src="js/scripts.js"></script>
 
   <script>
     $(document).ready(function () {
-      $("#options>*").click(function () {
-        console.log($(this).html());
-        $("#contenedor-flex").css("align-items", $(this).html());
+      const $options = $("#options > .option");
+      const $contenedorFlex = $("#contenedor-flex");
 
-        // Quitamos la clase active a todos los items y se lo ponemos al que se ha hecho clic
-        $("#options>*").removeClass("active");
+      $options.click(function () {
+        $contenedorFlex.css("align-items", $(this).html());
+
+        // Quitamos la clase active a todos los items y se lo ponemos al que se ha hecho clic.
+        $options.removeClass("active");
         $(this).addClass("active");
-
-        // Clic sobre el checkbox
-        $("#cb-flex-wrap").change(function () {
-          if ($(this).is(":checked")) {
-            $("#contenedor-flex").css("flex-wrap", "wrap");
-            $("#contenedor-flex").css("width", "200px");
-          } else {
-            $("#contenedor-flex").css("flex-wrap", "nowrap");
-            $("#contenedor-flex").css("width", "400px");
-          }
-        });
       });
 
-      // Simulamos clic en el primer elemento
-      $("#options>*:nth-child(1)").click();
+      // Simulamos clic en el elemento por defecto
+      $("#options > .option.default").click();
 
-      // Por defecto, el checkbox desactivado (errores cuando se recarga la página)
-      $("#cb-flex-wrap").prop("checked", false);
+      // Clic sobre el checkbox
+      $("#cb-flex-wrap").change(function () {
+        if ($(this).is(":checked")) {
+          $contenedorFlex.css("flex-wrap", "wrap");
+          $contenedorFlex.css("width", "200px");
+        } else {
+          $contenedorFlex.css("flex-wrap", "nowrap");
+          $contenedorFlex.css("width", "400px");
+        }
+      });
     });
   </script>
+
 </body>
 
 </html>

@@ -4,151 +4,118 @@
 <head>
   <title>flex-grow</title>
   <meta charset="UTF-8">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/nav-styles.css">
+  <link rel="stylesheet" href="css/estilos.css">
+
   <style>
-    * {
-      box-sizing: border-box;
-      font-size: 1rem;
-    }
-
-    h2 {
-      text-align: center;
-      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
-      padding: 10px;
-      margin: 0px 0px 10px 0px;
-      font-size: 1.25rem;
-    }
-
-    #options {
-      display: flex;
-    }
-
-    #options>* {
-      margin: 0px 10px 20px 0px;
-      border-radius: 10px;
-      cursor: pointer;
-      display: flex;
-      padding: 5px 10px;
-      background-color: #ccc;
-    }
-
-    #options>*.active,
-    #options>*:hover {
-      background-color: #333;
-      color: white;
-    }
-
-    sub {
-      display: block;
-      margin-bottom: 20px;
-    }
-
     #contenedor-flex {
-      background-color: #ccc;
-      display: flex;
-      width: 300px;
-    }
-
-    .item {
-      background-color: #777;
-      border: 1px solid black;
-      width: 50px;
-      text-align: center;
       padding: 20px 0px;
-      flex-grow: 0;
+      width: 700px;
     }
 
-    .ul-situaciones>li {
-      padding: 5px 10px;
-      margin: 0;
-    }
-
-    .highlight {
-      background-color: rgb(172, 255, 172);
-    }
-
-    code {
-      background-color: lightgrey;
-      padding: 2px 5px;
-      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
-      font-size: 0.875rem;
-    }
-
-    p,
-    li {
-      line-height: 1.5;
+    #contenedor-flex .item {
+      position: relative;
+      width: 200px;
     }
   </style>
 </head>
 
 <body>
-  <h2>flex-grow</h2>
-  <div id="options">
-    <div>flex-grow: [0,0,0]</div>
-    <div>flex-grow: [0,1,0]</div>
-    <div>flex-grow: [1,1,1]</div>
-    <div>flex-grow: [1,2,1]</div>
-    <div>flex-grow: [1,3,1]</div>
+
+  <div id="container">
+
+    <nav></nav>
+
+    <main>
+
+      <h2>flex-grow</h2>
+
+      <div id="options">
+        <div class="option default" data-item1="0" data-item2="0" data-item3="0">[0,0,0]</div>
+        <div class="option" data-item1="1" data-item2="1" data-item3="1">[1,1,1]</div>
+        <div class="option" data-item1="0" data-item2="1" data-item3="0">[0,1,0]</div>
+        <div class="option" data-item1="0" data-item2="2" data-item3="0">[0,2,0]</div>
+        <div class="option" data-item1="1" data-item2="2" data-item3="0">[1,2,0]</div>
+        <div class="option" data-item1="1" data-item2="2" data-item3="1">[1,2,1]</div>
+
+      </div>
+
+      <div id="contenedor-flex" class="my-3">
+        <div class="item">Lorem<span class="width-indicator"></span></div>
+        <div class="item">Lorem<span class="width-indicator"></span></div>
+        <div class="item">Lorem<span class="width-indicator"></span></div>
+      </div>
+
+      <p>La propiedad <code>flex-grow</code> especifica el factor de crecimiento de un elemento flexible en la dirección del eje principal. Por defecto vale 0, lo que implica que el ítem no se estira. Si asignamos el mismo valor a todos (cualquiera distinto de 0), se estiran todos por igual.</p>
+
+      <p class="mb-1">Observa lo que sucede en las siguientes situaciones:</p>
+
+      <ul class="ul-situaciones">
+
+        <li><b>Situación 1.</b> Todos los elementos tienen <code>flex-grow: 0</code>. El contenedor ocupa 700px de ancho y cada ítem ocupa 200px. Eso deja un espacio libre de 100px. Como todos los ítems tienen el valor por defecto, 0, ninguno se estira y el espacio libre queda sin asignar.</li>
+
+        <li><b>Situación 2.</b> Todos los elementos tienen <code>flex-grow: 1</code>. Los 100px de espacio libre se reparten a partes iguales entre los 3 ítems.</li>
+
+        <li><b>Situación 3.</b> Todos los elementos tienen <code>flex-grow: 1</code> menos el segundo, que tiene <code>flex-grow: 1</code>. Todo el espacio disponible se asigna al ítem 2.</li>
+
+        <li><b>Situación 4.</b> Todos los elementos tienen <code>flex-grow: 1</code> menos el segundo, que tiene <code>flex-grow: 2</code>. Igual que la situación anterior, todo el espacio disponible se asigna al ítem 2, por lo que pasa a ocupar 50+150=200px.</li>
+
+        <li><b>Situación 5.</b> El ítem 1 tiene <code>flex-grow: 1</code> y el ítem 2 tiene <code>flex-grow: 2</code>. Se reparten los 100px entre ellos dos, pero al segundo ítem le corresponde el doble de espacio que al primero.</li>
+
+        <li><b>Situación 5.</b> Misma situación que la anterior, pero ahora el ítem 3 tiene <code>flex-grow: 1</code>. A los ítems 1 y 3 se les asigna un 25% del espacio restante (1/4), mientras que al ítem 2 se le asigna el 50% (2/4).</li>
+
+      </ul>
+
+      <p class="mb-0">Documentación:</p>
+      <ul>
+        <li><a href="https://www.w3.org/TR/css-flexbox-1/#flex-grow-property" target="_blank" rel="noopener noreferrer">www.w3.org</a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/flex-grow" target="_blank" rel="noopener noreferrer">MDN Web Docs</a></li>
+      </ul>
+    </main>
+
   </div>
-  <sub>flex-grow: [X,Y,Z] indica el valor de la propiedad para cada ítem flexible.</sub>
-  <div id="contenedor-flex">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
-  </div>
-  <p>La propiedad <code>flex-grow</code> especifica el factor de crecimiento de un elemento flexible en la dirección del eje principal. Por defecto vale 0, lo que implica que el ítem no se estira. Si asignamos el mismo valor a todos (cualquiera distinto de 0), se estiran todos por igual.</p>
-  <p>Observa lo que sucede en las siguientes situaciones:</p>
-  <ul class="ul-situaciones">
-    <li><b>Situación 1.</b> Todos los elementos tienen <code>flex-grow: 0</code>. El contenedor ocupa 300px de ancho y cada ítem ocupa 50px. Eso deja un espacio libre de 150px. Como todos los ítems tienen el valor por defecto, 0, ninguno se estira y el espacio libre queda sin asignar.</li>
-    <li><b>Situación 2.</b> Todos los elementos tienen <code>flex-grow: 0</code> menos el segundo, que tiene <code>flex-grow: 1</code>. Todo el espacio dispoible se asigna al ítem 2, por lo que pasa a ocupar 50+150=200px.</li>
-    <li><b>Situación 3.</b> Todos los elementos tienen <code>flex-grow: 1</code>. Los 150px de espacio libre se reparten a partes iguales entre los 3 ítems.</li>
-    <li><b>Situación 4.</b> Todos los elementos tienen <code>flex-grow: 1</code> menos el segundo, que tiene <code>flex-grow: 2</code>. Se reparten los 150px entre 4, que es la suma de todos los valores de <code>flex-grow</code>: 150/4 = 37'5px. Ahora se asigna a cada ítem 37'5px multiplicado por su valor de <code>flex-grow</code>. Por tanto, los ítems 1 y 3 ocupan 50 + 37'5 = 87'5px cada uno, mientras que el ítem 2 ocupa 50 + 37'5*2 = 125px.</li>
-    <li><b>Situación 5.</b> Todos los elementos tienen <code>flex-grow: 1</code> menos el segundo, que tiene <code>flex-grow: 3</code>. Se reparten los 150px entre 5, que es la suma de todos los valores de <code>flex-grow</code>: 150/5 = 30px. Ahora se asigna a cada ítem 30px multiplicado por su valor de <code>flex-grow</code>. Por tanto, los ítems 1 y 3 ocupan 50 + 30 = 80px cada uno, mientras que el ítem 2 ocupa 50 + 30*3 = 140px.</li>
-  </ul>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <script src="js/scripts.js"></script>
 
   <script>
     $(document).ready(function () {
-      $("#options>*").click(function () {
-        switch ($(this).index()) {
-          case 0:
-            $("#contenedor-flex>*").css("flex-grow", 0);
-            break;
-          case 1:
-            $("#contenedor-flex>*").css("flex-grow", 0);
-            $("#contenedor-flex>*:nth-child(2)").css("flex-grow", 1);
-            break;
-          case 2:
-            $("#contenedor-flex>*").css("flex-grow", 1);
-            break;
-          case 3:
-            $("#contenedor-flex>*").css("flex-grow", 1);
-            $("#contenedor-flex>*:nth-child(2)").css("flex-grow", 2);
-            break;
-          case 4:
-            $("#contenedor-flex>*").css("flex-grow", 1);
-            $("#contenedor-flex>*:nth-child(2)").css("flex-grow", 3);
-            break;
-        }
+      const $options = $("#options > .option");
+      const $contenedorFlex = $("#contenedor-flex");
+      const $item1 = $("#contenedor-flex > .item:nth-child(1)");
+      const $item2 = $("#contenedor-flex > .item:nth-child(2)");
+      const $item3 = $("#contenedor-flex > .item:nth-child(3)");
+
+      $options.click(function () {
+        $item1.css("flex-grow", $(this).data("item1"));
+        $item2.css("flex-grow", $(this).data("item2"));
+        $item3.css("flex-grow", $(this).data("item3"));
+
+        // Ponemos la anchura de cada ítem flexible
+        showSizes();
 
         // Eliminamos la clase highlight a todos los li y se la ponemos al que corresponda
         $(".ul-situaciones>li").removeClass("highlight");
         $(".ul-situaciones>li:nth-child(" + ($(this).index() + 1) + ")").addClass("highlight");
 
-        // Ponemos la anchura de cada ítem flexible
-        $("#contenedor-flex>*").each(function () {
-          $(this).html($(this).css("width"));
-        });
-
-        // Quitamos la clase active a todos los items y se lo ponemos al que se ha hecho clic
+        // Eliminamos la clase active a todos los elementos y se la ponemos al que hemos hecho click
         $("#options>*").removeClass("active");
         $(this).addClass("active");
       });
 
-      // Simulamos clic en el primer elemento
-      $("#options>*:nth-child(1)").click();
-
+      // Simulamos clic en el elemento por defecto
+      $("#options > .default").click();
     });
   </script>
+
 </body>
 
 </html>
