@@ -37,16 +37,19 @@
         <div class="option default">flex-start</div>
         <div class="option">flex-end</div>
         <div class="option">center</div>
+        <div class="option">stretch</div>
+
+        <div class="break"></div>
+
         <div class="option">space-between</div>
         <div class="option">space-around</div>
         <div class="option">space-evenly</div>
-        <div class="option">stretch</div>
 
         <div class="break"></div>
 
         <div class="no-effect">
           <label for="anchura-contenedor">Anchura contenedor: </label>
-          <div id="anchura-contenedor-value">300</div>
+          <div id="anchura-contenedor-value" class="range-indicator">300</div>
           <input type="range" id="anchura-contenedor" name="anchura-contenedor" min="100" max="300" value="300">
         </div>
       </div>
@@ -60,7 +63,7 @@
         </div>
 
         <div id="explicacion">
-          <p>La propiedad <code>align-content</code> es un caso particular de <code>align-items</code>.</p>
+          <p class="mb-0">La propiedad <code>align-content</code> es un caso particular de <code>align-items</code>.</p>
           <ul>
             <li>Cuando el valor de <code>flex-wrap</code> es <code>nowrap</code>, esta propiedad no hace nada, no entra en acción. Puedes probarlo con el inspector y verás que cualquier cambio en el valor de la propiedad no afecta a lo ítems.</li>
             <li>Cuando el valor de <code>flex-wrap</code> es <code>wrap</code> o <code>wrap-reverse</code> podemos diferenciar dos situaciones:</li>

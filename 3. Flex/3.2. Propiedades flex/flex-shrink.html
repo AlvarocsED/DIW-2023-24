@@ -44,9 +44,11 @@
 
         <div class="no-effect">
           <label for="anchura-contenedor">Anchura contenedor: </label>
-          <div id="anchura-contenedor-value" contenteditable="true">700</div>
+          <div id="anchura-contenedor-value" class="range-indicator">700</div>
           <input type="range" id="anchura-contenedor" name="anchura-contenedor" min="200" max="700" step="50" value="700">
         </div>
+
+        <div class="break"></div>
 
         <div class="no-effect">
           <input type="radio" id="rb-items-iguales" name="rb-items" checked>
@@ -151,18 +153,16 @@
         if ($("#rb-items-iguales").prop("checked")) {
           $("#contenedor-flex > .item").css("width", "200px");
 
-          $(".ul-items-distintos").fadeOut("fast", function () {
-            $(".ul-items-iguales").fadeIn("fast");
-          });
+          $(".ul-items-distintos").removeClass("d-none");
+          $(".ul-items-iguales").addClass("d-none");
         }
         else {
           $("#contenedor-flex > .item:nth-child(1)").css("width", "100px");
           $("#contenedor-flex > .item:nth-child(2)").css("width", "200px");
           $("#contenedor-flex > .item:nth-child(3)").css("width", "300px");
 
-          $(".ul-items-iguales").fadeOut("fast", function () {
-            $(".ul-items-distintos").fadeIn("fast");
-          });
+          $(".ul-items-distintos").addClass("d-none");
+          $(".ul-items-iguales").removeClass("d-none");
         }
         showSizes();
       });

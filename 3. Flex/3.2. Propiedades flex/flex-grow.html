@@ -107,7 +107,7 @@
         $(".ul-situaciones>li:nth-child(" + ($(this).index() + 1) + ")").addClass("highlight");
 
         // Eliminamos la clase active a todos los elementos y se la ponemos al que hemos hecho click
-        $("#options>*").removeClass("active");
+        $options.removeClass("active");
         $(this).addClass("active");
       });
 

@@ -11,20 +11,8 @@
   <link rel="stylesheet" href="css/estilos.css">
 
   <style>
-    main #options label {
+    #options label {
       width: 100px;
-    }
-
-    main #options div#gap-value,
-    main #options div#row-gap-value,
-    main #options div#column-gap-value {
-      background-color: #fff;
-      font-size: .875em;
-      text-align: center;
-      border-radius: 8px;
-      padding: 3px 6px;
-      margin: 0px 10px;
-      width: 35px;
     }
 
     #contenedor-flex {
@@ -49,24 +37,25 @@
       <h2>row-gap | column-gap</h2>
 
       <div class="d-flex align-items-start gap-4 mb-4">
+
         <div class="flex-shrink-0">
           <div id="options" class="flex-column">
 
             <div class="no-effect">
               <label for="gap-slider">gap: </label>
-              <div id="gap-value">0</div>
+              <div id="gap-value" class="range-indicator">0</div>
               <input type="range" id="gap-slider" name="gap-slider" min="0" max="100" value="0">
             </div>
 
             <div class="no-effect">
               <label for="row-gap-slider">row-gap: </label>
-              <div id="row-gap-value">0</div>
+              <div id="row-gap-value" class="range-indicator">0</div>
               <input type="range" id="row-gap-slider" name="row-gap-slider" min="0" max="100" value="0">
             </div>
 
             <div class="no-effect">
               <label for="column-gap-slider">column-gap: </label>
-              <div id="column-gap-value">0</div>
+              <div id="column-gap-value" class="range-indicator">0</div>
               <input type="range" id="column-gap-slider" name="column-gap-slider" min="0" max="100" value="0">
             </div>
           </div>

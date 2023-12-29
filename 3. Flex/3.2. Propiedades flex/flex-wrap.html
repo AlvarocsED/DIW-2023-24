@@ -19,11 +19,6 @@
     #contenedor-flex .item {
       width: 75px;
     }
-
-    label,
-    input[type="checkbox"] {
-      cursor: pointer;
-    }
   </style>
 </head>
 
@@ -45,7 +40,7 @@
 
         <div class="no-effect">
           <label for="anchura-contenedor">Anchura contenedor: </label>
-          <div id="anchura-contenedor-value">300</div>
+          <div id="anchura-contenedor-value" class="range-indicator">300</div>
           <input type="range" id="anchura-contenedor" name="anchura-contenedor" min="25" max="300" value="300">
         </div>
 
@@ -101,24 +96,20 @@
       // Simulamos clic en el elemento por defecto
       $("#options > .option.default").click();
 
-      // Modificación de la anchura del input range
+      // Modificación del input range
       $('#anchura-contenedor').on('input', function () {
         var valor = $(this).val();
         $('#anchura-contenedor-value').text(valor);
-        $('#contenedor-flex').css("width", valor);
+        $contenedorFlex.css("width", valor);
       });
-
-      // Para evitar modificaciones en el ancho del div donde está el slider, cogemos su anchura al cargar, que es la máxima, y se la ponemos definitiva.
-      var anchura = $('#anchura-contenedor-value').css("width");
-      $('#anchura-contenedor-value').css("width", anchura);
 
       // Clic sobre el checkbox
       $('#cb-overflow-hidden').change(function () {
         if ($(this).is(':checked')) {
-          $("#contenedor-flex").css("overflow", "hidden");
+          $contenedorFlex.css("overflow", "hidden");
         }
         else {
-          $("#contenedor-flex").css("overflow", "initial");
+          $contenedorFlex.css("overflow", "initial");
         }
       });
     });
