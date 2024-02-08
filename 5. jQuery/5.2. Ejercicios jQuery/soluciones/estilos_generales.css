@@ -28,3 +28,10 @@ p {
   border: 1px solid #ccc;
   padding: 1em;
 }
+
+code.inline {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 87.5%;
+  color: #e83e8c;
+  word-break: break-word;
+}
