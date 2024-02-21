@@ -4,191 +4,125 @@
 <head>
   <title>justify-content</title>
   <meta charset="UTF-8">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/nav-styles.css">
+  <link rel="stylesheet" href="css/estilos.css">
+
   <style>
-    * {
-      box-sizing: border-box;
-      font-size: 1rem;
-    }
-
-    h2 {
-      text-align: center;
-      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
-      padding: 10px;
-      margin: 0px 0px 10px 0px;
-      font-size: 1.25rem;
-      border-bottom: 1px solid rgb(185, 185, 185);
-    }
-
-    .highlight {
-      background-color: rgb(172, 255, 172);
-    }
-
-    code {
-      background-color: lightgrey;
-      padding: 2px 5px;
-      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
-      font-size: 0.875rem;
-    }
-
-    p,
-    li {
-      line-height: 1.5;
-    }
-
-    label,
-    input[type="checkbox"] {
-      cursor: pointer;
-    }
-
-    main {
-      display: flex;
-      column-gap: 2rem;
-    }
-
-    main #options {
-      display: flex;
-      flex-direction: column;
-      row-gap: 10px;
-      column-gap: 100px;
-    }
-
-    main #options .row {
-      display: flex;
-      column-gap: 10px;
-    }
-
-    #options [data-option] {
-      border-radius: 10px;
-      cursor: pointer;
-      display: flex;
-      padding: 5px 10px;
-      background-color: #ccc;
-      white-space: nowrap;
-    }
-
-    #options [data-option].active,
-    #options [data-option]:hover {
-      background-color: #333;
-      color: white;
-    }
-
     #contenedor-flex {
-      grid-area: ejemplo;
-      background-color: #ccc;
       padding: 20px 0px;
       width: 400px;
-      display: flex;
     }
 
     #contenedor-flex .item {
-      background-color: #777;
-      border: 1px solid black;
-      padding: 20px;
-    }
-
-    #explicacion .ul-situaciones>li {
-      padding: 5px;
-      margin: 0;
+      padding: 20px 40px;
     }
   </style>
 </head>
 
 <body>
-  <h2>justify-content</h2>
 
-  <main>
+  <div id="container">
 
-    <div id="izquierda">
-      <h3>Posibles valores</h3>
+    <nav></nav>
+
+    <main>
+      <h2>justify-content</h2>
+
       <div id="options">
-        <div class="row">
-          <div data-option="start">flex-start</div>
-          <div data-option="end">flex-end</div>
-          <div data-option="center">center</div>
-          <div data-option="start">start</div>
-          <div data-option="end">end</div>
-        </div>
-        <div class="row">
-          <div data-option="space-between">space-between</div>
-          <div data-option="space-around">space-around</div>
-          <div data-option="space-evenly">space-evenly</div>
-          <div data-option="stretch">stretch</div>
-        </div>
-        <div class="row">
-          <div data-option="left">left</div>
-          <div data-option="right">right</div>
-        </div>
+        <div class="option default">flex-start</div>
+        <div class="option">flex-end</div>
+        <div class="option">center</div>
+        <div class="option">start</div>
+        <div class="option">end</div>
 
-        <div style="margin-bottom: 20px">
-          <input type="checkbox" id="cb-flex-wrap" name="cb-flex-wrap">
-          <label for="cb-flex-wrap">Activar <code>flex-wrap: wrap</code></label>
+        <div class="break"></div>
+
+        <div class="option">space-between</div>
+        <div class="option">space-around</div>
+        <div class="option">space-evenly</div>
+        <div class="option">stretch</div>
+
+        <div class="break"></div>
+
+        <div class="option">left</div>
+        <div class="option">right</div>
+
+        <div class="break"></div>
+
+        <div class="no-effect">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="cb-flex-wrap">
+            <label class="form-check-label" for="cb-flex-wrap"><code>flex-wrap: wrap</code></label>
+          </div>
         </div>
       </div>
 
-      <div id="contenedor-flex">
+      <div id="contenedor-flex" class="mb-3">
         <div class="item">1</div>
         <div class="item">2</div>
         <div class="item">3</div>
       </div>
-    </div>
 
-    <div id="derecha">
-      <h3>Descripción</h3>
       <div id="explicacion">
         <p>La propiedad <code>justify-content</code> sirve para alinear los ítems a lo largo del eje principal.</p>
         <p>Prueba a activar el checkbox para ver cómo se comporta esta propiedad cuando <code>flex-wrap: wrap</code>, es decir, en un contenedor multilínea.</p>
 
-        <ul class="ul-situaciones">
-          <li data-option="start"><code>flex-start</code> y <code>start</code> agrupan los ítems al principio del eje principal.</li>
-          <li data-option="end"><code>flex-end</code> y <code>end</code> agrupan los ítems al final del eje principal.</li>
-          <li data-option="center"><code>center</code> agrupa los ítems en el centro del eje principal.</li>
-          <li data-option="space-between"><code>space-between</code> distribuye el espacio entre los ítems dejando uno al inicio y otro al final.</li>
-          <li data-option="space-around"><code>space-around</code> distribuye el espacio entre ítems dejando el mismo espacio entre los ítems, como si fuera un cilindro.</li>
-          <li data-option="space-evenly"><code>space-evenly</code> distribuye el espacio entre ítems dejando el mismo espacio entre los ítems y hasta los bordes.</li>
-          <li data-option="stretch"><code>stretch</code> se comporta como <code>start</code> en contenedores flex.</li>
-          <li data-option="left"><code>left</code> agrupa los ítems a la izquierda.</li>
-          <li data-option="right"><code>right</code> agrupa los ítems a la derecha.</li>
-        </ul>
-
         <p>La principal diferencia entre <code>flex-start</code> y <code>start</code> y entre <code>flex-end</code> y <code>end</code> está que <code>flex-start</code> y <code>flex-end</code> son valores de uso exclusivo con layouts flex, mientras que <code>start</code> y <code>end</code> son valores que se pueden usar en propiedades con otros tipos de layouts, como grid.</p>
 
         <p>Además, la <a href="https://www.w3.org/TR/css-align-3/#propdef-justify-content" target="_blank" rel="noopener noreferrer">especificación</a> indica que puede tomar dos valores que no vienen recogidos: <code>safe</code> y <code>unsafe</code>. El soporte de los navegadores para estas propiedades es aún muy bajo (2023), por lo que nos centraremos en el resto, que están ampliamente soportados.</p>
+
+        <p class="mb-0">Documentación:</p>
+        <ul>
+          <li><a href="https://www.w3.org/TR/css-flexbox-1/#justify-content-property" target="_blank" rel="noopener noreferrer">www.w3.org</a></li>
+          <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/justify-content" target="_blank" rel="noopener noreferrer">MDN Web Docs</a></li>
+        </ul>
       </div>
-    </div>
-  </main>
+
+    </main>
+
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <script src="js/scripts.js"></script>
 
   <script>
     $(document).ready(function () {
-      $("#options [data-option]").click(function () {
-        $("#contenedor-flex").css("justify-content", $(this).data("option"));
-        console.log($(this).data("option"));
+      const $options = $("#options > .option");
+      const $contenedorFlex = $("#contenedor-flex");
 
-        // Quitamos la clase active a todos los items y se lo ponemos al que se ha hecho clic
-        $("#options [data-option]").removeClass("active");
+      $options.click(function () {
+        $contenedorFlex.css("justify-content", $(this).html());
+
+        // Quitamos la clase active a todos los items y se lo ponemos al que se ha hecho clic.
+        $options.removeClass("active");
         $(this).addClass("active");
-
-        // Eliminamos la clase highlight a todos los li y se la ponemos al que corresponda
-        $(".ul-situaciones li").removeClass("highlight");
-        $('.ul-situaciones li[data-option="' + $(this).data("option") + '"]').addClass("highlight");
       });
 
-      // Simulamos clic en el primer elemento
-      $("#options .option:nth-child(1)").click();
+      // Simulamos clic en el elemento por defecto
+      $("#options > .option.default").click();
 
       // Clic sobre el checkbox
       $('#cb-flex-wrap').change(function () {
         if ($(this).is(':checked')) {
-          $("#contenedor-flex").css("flex-wrap", "wrap");
-          $("#contenedor-flex").css("width", "140px");
+          $contenedorFlex.css("flex-wrap", "wrap");
+          $contenedorFlex.css("width", "250px");
         }
         else {
-          $("#contenedor-flex").css("flex-wrap", "nowrap");
-          $("#contenedor-flex").css("width", "400px");
+          $contenedorFlex.css("flex-wrap", "nowrap");
+          $contenedorFlex.css("width", "400px");
         }
       });
     });
   </script>
+
 </body>
 
 </html>

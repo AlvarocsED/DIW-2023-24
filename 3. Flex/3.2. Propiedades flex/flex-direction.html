@@ -4,94 +4,88 @@
 <head>
   <title>flex-direction</title>
   <meta charset="UTF-8">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/nav-styles.css">
+  <link rel="stylesheet" href="css/estilos.css">
+
   <style>
-    * {
-      box-sizing: border-box;
-      font-size: 1rem;
-    }
-
-    h2 {
-      text-align: center;
-      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
-      padding: 10px;
-      margin: 0px 0px 10px 0px;
-      font-size: 1.25rem;
-    }
-
-    #options {
-      display: flex;
-    }
-
-    #options>* {
-      margin: 0px 10px 20px 0px;
-      border-radius: 10px;
-      cursor: pointer;
-      display: flex;
-      padding: 5px 10px;
-      background-color: #ccc;
-    }
-
-    #options>*.active,
-    #options>*:hover {
-      background-color: #333;
-      color: white;
-    }
-
     #contenedor-flex {
-      background-color: #ccc;
       padding: 20px;
-      width: 500px;
+      width: 400px;
       height: 300px;
-      display: flex;
     }
 
-    .item {
-      background-color: #777;
-      border: 1px solid black;
-      padding: 20px;
-    }
-
-    code {
-      background-color: lightgrey;
-      padding: 2px 5px;
-      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
-      font-size: 0.875rem;
-    }
-
-    p {
-      line-height: 1.5;
+    #contenedor-flex .item {
+      width: 50px;
+      padding: 20px 0px;
     }
   </style>
 </head>
 
 <body>
-  <h2>flex-direction</h2>
-  <div id="options">
-    <div>row</div>
-    <div>row-reverse</div>
-    <div>column</div>
-    <div>column-reverse</div>
+
+  <div id="container">
+
+    <nav></nav>
+
+    <main>
+
+      <h2>flex-direction</h2>
+
+      <div id="options">
+        <div class="option default">row</div>
+        <div class="option">row-reverse</div>
+        <div class="option">column</div>
+        <div class="option">column-reverse</div>
+      </div>
+
+      <div class="d-flex align-items-start gap-4">
+        <div id="contenedor-flex">
+          <div class="item">Rojo</div>
+          <div class="item">Verde</div>
+          <div class="item">Azul</div>
+        </div>
+
+        <div id="explicacion">
+          <p>Con <code>flex-direction</code> podemos modificar la dirección del eje principal del contenedor para que se oriente en horizontal (por defecto) o en vertical. Además, también podemos incluir el sufijo <code>-reverse</code> para indicar que coloque los ítems en orden inverso al que aparecen en el documento html.</p>
+
+          <p class="mb-0">Documentación:</p>
+          <ul>
+            <li><a href="https://www.w3.org/TR/css-flexbox-1/#flex-direction-property" target="_blank" rel="noopener noreferrer">www.w3.org</a></li>
+            <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/flex-direction" target="_blank" rel="noopener noreferrer">MDN Web Docs</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </main>
+
   </div>
-  <div id="contenedor-flex">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
-  </div>
-  <p>Con <code>flex-direction</code> podemos modificar la dirección del eje principal del contenedor para que se oriente en horizontal (por defecto) o en vertical. Además, también podemos incluir el sufijo <code>-reverse</code> para indicar que coloque los ítems en orden inverso al que aparecen en el documento html.</p>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <script src="js/scripts.js"></script>
 
   <script>
     $(document).ready(function () {
-      $("#options>*").click(function () {
-        $("#contenedor-flex").css("flex-direction", $(this).html());
+      const $options = $("#options > .option");
+      const $contenedorFlex = $("#contenedor-flex");
+
+      $options.click(function () {
+        $contenedorFlex.css("flex-direction", $(this).html());
 
         // Quitamos la clase active a todos los items y se lo ponemos al que se ha hecho clic
-        $("#options>*").removeClass("active");
+        $options.removeClass("active");
         $(this).addClass("active");
       });
 
-      // Simulamos clic en el primer elemento
-      $("#options>*:nth-child(1)").click();
+      // Simulamos clic en el elemento por defecto
+      $("#options > .option.default").click();
     });
   </script>
 </body>

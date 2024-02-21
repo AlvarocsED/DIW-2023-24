@@ -4,174 +4,107 @@
 <head>
   <title>flex-basis</title>
   <meta charset="UTF-8">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/nav-styles.css">
+  <link rel="stylesheet" href="css/estilos.css">
+
   <style>
-    * {
-      box-sizing: border-box;
-      font-size: 1rem;
-    }
-
-    h2 {
-      text-align: center;
-      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
-      padding: 10px;
-      margin: 0px 0px 10px 0px;
-      font-size: 1.25rem;
-    }
-
-    #options {
-      display: flex;
-    }
-
-    #options>* {
-      margin: 0px 10px 20px 0px;
-      border-radius: 10px;
-      cursor: pointer;
-      display: flex;
-      padding: 5px 10px;
-      background-color: #ccc;
-      text-align: center;
-    }
-
-    #options>*.active,
-    #options>*:hover {
-      background-color: #333;
-      color: white;
-    }
-
-    sub {
-      display: block;
-      margin-bottom: 20px;
-    }
-
     #contenedor-flex {
-      background-color: #ccc;
-      display: flex;
+      padding: 20px 0px;
+      width: 700px;
     }
 
-    .item {
-      background-color: #777;
-      border: 1px solid black;
-      text-align: center;
-      padding: 20px;
-      color: white;
-    }
-
-    .item span.anchura {
-      font-size: 0.75em;
-      display: block;
-    }
-
-    code {
-      background-color: lightgrey;
-      padding: 2px 5px;
-      font-family: 'Consolas', 'Lucida Console', 'Courier New', Courier, monospace;
-      font-size: 0.875rem;
-    }
-
-    p {
-      line-height: 1.5;
-    }
-
-    label,
-    input[type="checkbox"] {
-      cursor: pointer;
+    #contenedor-flex .item {
+      position: relative;
     }
   </style>
 </head>
 
 <body>
 
-  <h2>flex-basis</h2>
+  <div id="container">
 
-  <div id="options">
-    <div data-item1="150px" data-item2="auto" data-item3="150px">flex-basis:<br>[150px, auto, 150px]</div>
-    <div data-item1="150px" data-item2="content" data-item3="150px">flex-basis:<br>[150px, content, 150px]</div>
-    <div data-item1="150px" data-item2="150px" data-item3="150px">flex-basis:<br>[150px, 150px, 150px]</div>
-    <div data-item1="150px" data-item2="300px" data-item3="150px">flex-basis:<br>[150px, 300px, 150px]</div>
-    <div data-item1="150px" data-item2="50%" data-item3="150px">flex-basis:<br>[150px, 50%, 150px]</div>
-    <div data-item1="33.3%" data-item2="33.3%" data-item3="33.3%">flex-basis:<br>[33.3%, 33.3%, 33.3%]</div>
+    <nav></nav>
+
+    <main>
+
+      <h2>flex-basis</h2>
+
+      <div id="options">
+        <div class="option default" data-item1="auto" data-item2="auto" data-item3="auto">[auto, auto, auto]</div>
+        <div class="option" data-item1="150px" data-item2="150px" data-item3="auto">[150px, 150px, auto]</div>
+        <div class="option" data-item1="150px" data-item2="150px" data-item3="content">[150px, 150px, content]</div>
+
+        <div class="break"></div>
+
+        <div class="option" data-item1="150px" data-item2="150px" data-item3="min-content">[150px, 150px, min-content]</div>
+        <div class="option" data-item1="150px" data-item2="150px" data-item3="max-content">[150px, 150px, max-content]</div>
+        <div class="option" data-item1="150px" data-item2="150px" data-item3="50%">[150px, 150px, 50%]</div>
+        <div class="option" data-item1="33.3%" data-item2="33.3%" data-item3="33.3%">[33.3%, 33.3%, 33.3%]</div>
+      </div>
+
+      <div id="contenedor-flex" class="my-3">
+        <div class="item">Lorem<span class="width-indicator"></span></div>
+        <div class="item">Lorem ipsum<span class="width-indicator"></span></div>
+        <div class="item">Lorem ipsum dolor<span class="width-indicator"></span></div>
+      </div>
+
+      <p>La propiedad <code>flex-basis</code> define el tamaño base por defecto que tendrán los ítems antes de aplicarle una cierta distribución de espacio (como con <code>flex-grow</code>).</p>
+
+      <p class="mb-0">Según la especificación, <code>flex-basis</code> se resuelve de la misma manera que <code>width</code> salvo para los valores <code>auto</code> y <code>content</code>, aunque en la mayoría de los casos estos se comportan de la misma manera:</p>
+      <ul>
+        <li>Cuando el valor es <code>auto</code>, el tamaño se establecerá según el valor de <code>width</code>. Si <code>width</code> es también <code>auto</code>, entonces se aplicará <code>content</code>.</li>
+        <li>Cuando el valor es <code>content</code>, el tamaño se establecerá según el tamaño del ítem flexible. Suele ser equivalente a <code>max-content</code>.</li>
+      </ul>
+
+      <p class="mb-0">Documentación:</p>
+      <ul>
+        <li><a href="https://www.w3.org/TR/css-flexbox-1/#flex-basis-property" target="_blank" rel="noopener noreferrer">www.w3.org</a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/flex-basis" target="_blank" rel="noopener noreferrer">MDN Web Docs</a></li>
+      </ul>
+    </main>
+
   </div>
 
-  <sub><code>flex-basis: [X,Y,Z]</code> indica el valor de la propiedad para cada ítem flexible.</sub>
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-  <div style="margin-bottom: 20px">
-    <input type="checkbox" id="cb-flex-direction" name="cb-flex-direction">
-    <label for="cb-flex-direction">Activar <code>flex-direction: column</code> y <code>height: 500px;</code></label>
-  </div>
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-  <div style="margin-bottom: 20px">
-    <input type="checkbox" id="cb-width" name="cb-width">
-    <label for="cb-width">Activar <code>width: 200px</code> en el contenedor</label>
-  </div>
-
-  <div id="contenedor-flex">
-    <div class="item"><span>Soy el primero</span><span class="anchura"></span></div>
-    <div class="item"><span>Soy el hermano del medio</span><span class="anchura"></span></div>
-    <div class="item"><span>Soy el último</span><span class="anchura"></span></div>
-  </div>
-
-  <p>La propiedad <code>flex-basis</code> define el tamaño base por defecto que tendrán los ítems antes de aplicarle una cierta distribución de espacio (como con <code>flex-grow</code>). Se puede aplicar un tamaño específico (en unidades, píxeles, porcentajes…), pero también se puede aplicar la palabra clave <code>content</code>, que ajusta automáticamente el tamaño al contenido del elemento. Este es el valor por defecto.</p>
+  <script src="js/scripts.js"></script>
 
   <script>
     $(document).ready(function () {
-      $("#options>*").on("click", function () {
+      const $options = $("#options > .option");
+      const $contenedorFlex = $("#contenedor-flex");
+      const $item1 = $("#contenedor-flex > .item:nth-child(1)");
+      const $item2 = $("#contenedor-flex > .item:nth-child(2)");
+      const $item3 = $("#contenedor-flex > .item:nth-child(3)");
 
-        $("#contenedor-flex>*:nth-child(1)>span.anchura").html("");
-        $("#contenedor-flex>*:nth-child(2)>span.anchura").html("");
-        $("#contenedor-flex>*:nth-child(3)>span.anchura").html("");
+      $options.click(function () {
+        $item1.css("flex-basis", $(this).data("item1"));
+        $item2.css("flex-basis", $(this).data("item2"));
+        $item3.css("flex-basis", $(this).data("item3"));
 
-        // Establecemos flex-basis en cada ítem flexible en función del elemento clicado
-        $("#contenedor-flex>*:nth-child(1)").css("flex-basis", $(this).data("item1"));
-        $("#contenedor-flex>*:nth-child(2)").css("flex-basis", $(this).data("item2"));
-        $("#contenedor-flex>*:nth-child(3)").css("flex-basis", $(this).data("item3"));
-
-        // Escribimos la anchura o altura de los ítems en función de si el checkbox está seleccionado
-        if ($('#cb-flex-direction').is(':checked')) {
-          $("#contenedor-flex>*:nth-child(1)>span.anchura").html($("#contenedor-flex>*:nth-child(1)").css("height"));
-          $("#contenedor-flex>*:nth-child(2)>span.anchura").html($("#contenedor-flex>*:nth-child(2)").css("height"));
-          $("#contenedor-flex>*:nth-child(3)>span.anchura").html($("#contenedor-flex>*:nth-child(3)").css("height"));
-        }
-        else {
-          $("#contenedor-flex>*:nth-child(1)>span.anchura").html($("#contenedor-flex>*:nth-child(1)").css("width"));
-          $("#contenedor-flex>*:nth-child(2)>span.anchura").html($("#contenedor-flex>*:nth-child(2)").css("width"));
-          $("#contenedor-flex>*:nth-child(3)>span.anchura").html($("#contenedor-flex>*:nth-child(3)").css("width"));
-        }
+        // Ponemos la anchura de cada ítem flexible
+        showSizes();
 
         // Eliminamos la clase active a todos los elementos y se la ponemos al que hemos hecho click
         $("#options>*").removeClass("active");
         $(this).addClass("active");
       });
 
-      // Clic sobre el checkbox para cambiar flex-direction
-      $('#cb-flex-direction').change(function () {
-        if ($(this).is(':checked')) {
-          $("#contenedor-flex").css("flex-direction", "column");
-          $("#contenedor-flex").css("height", "500px");
-        }
-        else {
-          $("#contenedor-flex").css("flex-direction", "row");
-          $("#contenedor-flex").css("height", "auto");
-        }
-      });
+      // Ponemos la anchura de cada ítem flexible
+      showSizes();
 
-      // Clic sobre el checkbox para setear width en el contenedor
-      $('#cb-width').change(function () {
-        if ($(this).is(':checked')) {
-          console.log($(this).is(':checked'));
-          $("#contenedor-flex").animate({ width: "300px" }, 500);
-        }
-        else {
-          console.log($(this).is(':checked'));
-          // $("#contenedor-flex").animate({ width: "500px" }, 500);
-          $("#contenedor-flex").css("width", "auto");
-        }
-      });
-
-      // Simulamos clic en el primer elemento
-      $("#options>*:nth-child(1)").trigger("click");
+      // Simulamos clic en el elemento por defecto
+      $("#options > .default").click();
     });
   </script>
+
 </body>
 
 </html>

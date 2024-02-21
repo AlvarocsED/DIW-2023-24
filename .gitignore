@@ -33,3 +33,4 @@ PRUEBAS/
 *.md
 
 # Allow
+!Lista de extensiones VSC.pdf

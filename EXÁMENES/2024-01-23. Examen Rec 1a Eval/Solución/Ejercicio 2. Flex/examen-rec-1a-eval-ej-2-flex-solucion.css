@@ -1,0 +1,39 @@
+/********** Estilos generales **********/
+* {
+  box-sizing: border-box;
+}
+
+.bg-clr-lightblue {
+  background-color: lightblue;
+}
+
+.bg-clr-lightcoral {
+  background-color: lightcoral;
+}
+
+.bg-clr-lightcyan {
+  background-color: lightcyan;
+}
+
+.bg-clr-lightgoldenrodyellow {
+  background-color: lightgoldenrodyellow;
+}
+
+.row {
+  margin-bottom: 1em;
+  outline: 3px solid #1d016f;
+}
+
+.fila-1> :nth-child(1) {
+  align-self: center;
+}
+
+.fila-1> :nth-child(2) {
+  align-self: flex-start;
+}
+
+
+
+
+
+/* Contenedor principal */
